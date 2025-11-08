@@ -1,64 +1,163 @@
-// Simple slideshow script for .hero-slideshow
+// Ultra-smooth slideshow with perfect right-to-left sliding
 (function () {
-  const slides = Array.from(
-    document.querySelectorAll(".hero-slideshow .slide")
-  );
+  "use strict";
+
+  if (window.slideshowInitialized) return;
+  window.slideshowInitialized = true;
+
+  const SLIDE_DURATION = 3000;
+  const slides = document.querySelectorAll(".hero-slideshow .slide");
   const caption = document.querySelector(".hero-slideshow .slideshow-caption");
   const prevBtn = document.getElementById("ss-prev");
   const nextBtn = document.getElementById("ss-next");
-  let current = 0;
-  let timer = null;
 
-  function showSlide(idx) {
-    slides.forEach((slide, i) => {
-      if (!slide.imgEl) {
-        // Lazy create image element
-        const img = document.createElement("img");
-        img.src = slide.getAttribute("data-src");
-        img.alt = slide.getAttribute("data-caption") || "";
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        slide.appendChild(img);
-        slide.imgEl = img;
-      }
-      if (i === idx) {
-        slide.classList.add("active");
-      } else {
-        slide.classList.remove("active");
-      }
-    });
-    if (caption) {
-      caption.textContent = slides[idx].getAttribute("data-caption") || "";
+  let currentIndex = 0;
+  let isAnimating = false;
+  let autoTimer = null;
+
+  if (!slides || slides.length === 0) return;
+
+  // Initialize images
+  slides.forEach((slide, index) => {
+    const dataSrc = slide.getAttribute("data-src");
+    if (dataSrc) {
+      slide.innerHTML = "";
+
+      const img = document.createElement("img");
+      img.src = dataSrc;
+      img.alt = slide.getAttribute("data-caption") || `Slide ${index + 1}`;
+      img.style.cssText = `
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      `;
+
+      img.onload = () => (img.style.opacity = "1");
+      img.onerror = () => {
+        slide.innerHTML = `
+          <div style="display:flex;align-items:center;justify-content:center;height:100%;background:#333;color:#fff;font-size:18px;">
+            Image ${index + 1} not found
+          </div>
+        `;
+      };
+
+      slide.appendChild(img);
     }
-    current = idx;
+  });
+
+  // Slide transition function
+  function goToSlide(targetIndex) {
+    if (isAnimating || targetIndex === currentIndex) return;
+
+    // Normalize index
+    if (targetIndex >= slides.length) targetIndex = 0;
+    if (targetIndex < 0) targetIndex = slides.length - 1;
+
+    isAnimating = true;
+
+    const currentSlide = slides[currentIndex];
+    const nextSlide = slides[targetIndex];
+
+    // Reset all slides to default position
+    slides.forEach((slide) => {
+      slide.classList.remove("active", "sliding-out");
+      slide.style.transform = "translateX(100%)";
+      slide.style.zIndex = "1";
+    });
+
+    // Position current slide at center
+    currentSlide.style.transform = "translateX(0)";
+    currentSlide.style.zIndex = "2";
+
+    // Position next slide off-screen right
+    nextSlide.style.transform = "translateX(100%)";
+    nextSlide.style.zIndex = "3";
+
+    // Force reflow
+    nextSlide.offsetHeight;
+
+    // Start animation
+    requestAnimationFrame(() => {
+      // Current slide moves left
+      currentSlide.style.transform = "translateX(-100%)";
+      // Next slide moves to center
+      nextSlide.style.transform = "translateX(0)";
+
+      // Update caption immediately
+      if (caption) {
+        caption.textContent =
+          slides[targetIndex].getAttribute("data-caption") || "";
+      }
+
+      currentIndex = targetIndex;
+
+      // Animation complete
+      setTimeout(() => {
+        isAnimating = false;
+      }, 1200);
+    });
   }
 
+  // Navigation functions
   function nextSlide() {
-    showSlide((current + 1) % slides.length);
+    goToSlide((currentIndex + 1) % slides.length);
   }
+
   function prevSlide() {
-    showSlide((current - 1 + slides.length) % slides.length);
+    goToSlide((currentIndex - 1 + slides.length) % slides.length);
   }
 
-  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-
-  // Autoplay every 4s
-  function startAutoplay() {
-    timer = setInterval(nextSlide, 4000);
-  }
-  function stopAutoplay() {
-    if (timer) clearInterval(timer);
+  // Auto-play control
+  function startAutoPlay() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(nextSlide, SLIDE_DURATION);
   }
 
-  showSlide(0);
-  startAutoplay();
-
-  // Pause on hover
-  const slideshow = document.querySelector(".hero-slideshow");
-  if (slideshow) {
-    slideshow.addEventListener("mouseenter", stopAutoplay);
-    slideshow.addEventListener("mouseleave", startAutoplay);
+  function stopAutoPlay() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
   }
+
+  function restartAutoPlay() {
+    stopAutoPlay();
+    setTimeout(startAutoPlay, 100);
+  }
+
+  // Manual navigation
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      prevSlide();
+      restartAutoPlay();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      nextSlide();
+      restartAutoPlay();
+    });
+  }
+
+  // Initialize
+  if (slides.length > 0) {
+    slides[currentIndex].style.transform = "translateX(0)";
+    slides[currentIndex].style.zIndex = "3";
+
+    if (caption) {
+      caption.textContent =
+        slides[currentIndex].getAttribute("data-caption") || "";
+    }
+
+    startAutoPlay();
+  }
+
+  // Cleanup
+  window.addEventListener("beforeunload", stopAutoPlay);
 })();

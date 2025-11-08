@@ -18,14 +18,37 @@
         img.alt = slide.getAttribute("data-caption") || "";
         img.style.width = "100%";
         img.style.height = "100%";
-        img.style.objectFit = "cover";
+        img.style.objectFit = "contain";
+        img.style.background = "#222";
+        img.onerror = function () {
+          img.style.display = "none";
+          if (!slide.errorMsg) {
+            const msg = document.createElement("div");
+            msg.textContent = "Image not found: " + img.src;
+            msg.style.color = "#fff";
+            msg.style.background = "#222";
+            msg.style.padding = "32px";
+            msg.style.textAlign = "center";
+            msg.style.position = "absolute";
+            msg.style.top = 0;
+            msg.style.left = 0;
+            msg.style.right = 0;
+            msg.style.bottom = 0;
+            slide.appendChild(msg);
+            slide.errorMsg = msg;
+          }
+        };
         slide.appendChild(img);
         slide.imgEl = img;
       }
       if (i === idx) {
         slide.classList.add("active");
+        if (slide.imgEl) slide.imgEl.style.display = "block";
+        if (slide.errorMsg) slide.errorMsg.style.display = "block";
       } else {
         slide.classList.remove("active");
+        if (slide.imgEl) slide.imgEl.style.display = "none";
+        if (slide.errorMsg) slide.errorMsg.style.display = "none";
       }
     });
     if (caption) {

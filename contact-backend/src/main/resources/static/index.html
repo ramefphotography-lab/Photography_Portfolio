@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photoshoot Portfolio</title>
+  <meta name="description" content="A photography portfolio — responsive gallery with lightbox and keyboard navigation." />
+  <meta property="og:title" content="Photoshoot Portfolio" />
+  <meta property="og:description" content="A responsive gallery showcasing photography." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- logo: replace with your logo image if you have one (logo.png) -->
+        <a href="#top" class="logo">
+          <img src="images/wedding/5c1bab450d1023fef7c248d55bb7248e.jpg" alt="Aria & Co. logo" class="logo-img">
+        </a>
+        <div class="brand-text">
+          <h1>Aria & Co. Photography</h1>
+          <p class="tagline">Fine art wedding & portrait photography</p>
+        </div>
+      </div>
+      <nav class="cta">
+        <a href="#contact" class="btn">Book a session</a>
+      </nav>
+    </div>
+    
+  </header>
+  <!-- Full-bleed cinematic slideshow (wedding images) -->
+  <section class="hero-slideshow" aria-label="Featured wedding slideshow">
+    <!-- wedding-focused slides (wired to files in images/wedding) -->
+    <div class="slide" data-src="images/wedding/must-take-wedding-photos-bride-groom-walk-clary-prfeiffer-photography-0723-primary-b4221bcb1a2b43e6b0820a8c3e3bce52.jpg" data-caption="Bride & groom — Signature wedding portrait"></div>
+    <div class="slide" data-src="images/wedding/wedding-photo-trends-2025-bride-groom-ceremony.webp" data-caption="Ceremony — Golden moment"></div>
+    <div class="slide" data-src="images/wedding/5c1bab450d1023fef7c248d55bb7248e.jpg" data-caption="Portrait — Timeless portrait"></div>
+    <button id="ss-prev" class="ss-arrow" aria-label="Previous slide">
+      <!-- left arrow -->
+      <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path fill="#222" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+    </button>
+    <button id="ss-next" class="ss-arrow" aria-label="Next slide">
+      <!-- right arrow -->
+      <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path fill="#222" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+    </button>
+    <div class="slideshow-caption" aria-hidden="true"></div>
+  </section>
+
+  <!-- Emily intro section -->
+  <section class="emily-intro container">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;max-width:600px;margin:0 auto;">
+      <img src="images/portfolio/cf8e6e73198d320579f6660445eb23e4.jpg" alt="Bride & groom — Signature wedding portrait" class="intro-img" style="width:340px;height:340px;object-fit:cover;border-radius:0;box-shadow:0 6px 24px rgba(0,0,0,0.08);margin-bottom:24px;">
+      <h2 style="margin-bottom:16px;">Hi, I’m Emily, and I’m so glad you’re here!</h2>
+      <hr style="width:60px;margin:24px auto;border:0;border-top:2px solid #ddd;">
+      <p class="lead" style="margin-bottom:0;">I’m a family photographer based in Camden, New South Wales, specializing in capturing the genuine, fleeting moments that make your family unique. My style is warm, natural, and timeless, focused on connection and the everyday beauty of life together.</p>
+  <a class="btn btn-primary" href="#contact" style="margin:32px auto 0 auto;">Let's connect</a>
+      <section class="services-intro" style="margin-top:48px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:600px;">
+        <h3 style="font-size:2rem;margin-bottom:12px;">My services</h3>
+        <p style="font-size:1.15rem;margin-bottom:8px;">Cherish the joy of family life at every stage.</p>
+        <hr style="width:80px;margin:24px auto;border:0;border-top:2px solid #ddd;">
+        <p style="font-size:1.08rem;max-width:500px;">I create timeless photos of your little ones and the whole family, preserving the love, laughter, and meaningful moments you share together for years to come.</p>
+      </section>
+
+      <!-- Automatic sliding carousel row (3 photos) -->
+      </div>
+
+      <!-- Automatic sliding carousel row (3 photos, service-related) -->
+      <!-- Service Card Grid -->
+      <section class="service-card-grid" style="margin:56px auto 0 auto;max-width:1400px;">
+  <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:56px;align-items:start;width:100%;">
+          <!-- Card 1 -->
+          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;width:100%;">
+            <div style="position:relative;width:100%;height:340px;">
+              <img src="images/wedding/must-take-wedding-photos-bride-groom-walk-clary-prfeiffer-photography-0723-primary-b4221bcb1a2b43e6b0820a8c3e3bce52.jpg" alt="Season family mini" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="width:92%;margin-top:28px;text-align:center;">
+              <div style="font-size:1.35rem;font-weight:600;">Season family mini</div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
+            <div style="position:relative;width:100%;height:340px;">
+              <img src="images/wedding/wedding-photo-trends-2025-bride-groom-ceremony.webp" alt="Studio family mini" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="width:92%;margin-top:28px;text-align:center;">
+              <div style="font-size:1.35rem;font-weight:600;">Studio family mini</div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
+            <div style="position:relative;width:100%;height:340px;">
+              <img src="images/wedding/5c1bab450d1023fef7c248d55bb7248e.jpg" alt="Family session" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="width:92%;margin-top:28px;text-align:center;">
+              <div style="font-size:1.35rem;font-weight:600;">Family session</div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
+            <div style="position:relative;width:100%;height:340px;">
+              <img src="images/birthday/senior-man-blowing-out-birthday-cake-candles.jpg" alt="Maternity session" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="width:92%;margin-top:28px;text-align:center;">
+              <div style="font-size:1.35rem;font-weight:600;">Maternity session</div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
+            <div style="position:relative;width:100%;height:340px;">
+              <img src="images/birthday/images.jpeg" alt="Newborn session" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="width:92%;margin-top:28px;text-align:center;">
+              <div style="font-size:1.35rem;font-weight:600;">Newborn session</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </section>
+      
+    </div>
+  </section>
+
+  <main class="container">
+
+
+
+
+    <section id="contact" class="contact two-col">
+      <div class="contact-left">
+        <img src="images/home-opening/1135w-NpOlTznHhJc.webp" alt="Contact portrait">
+      </div>
+      <div class="contact-right">
+        <h3>Let’s capture some memories!</h3>
+        <p>Welcome! I can't wait to meet your beautiful family and capture your precious moments. Ready to begin? Please complete the client inquiry form here.</p>
+        <form id="contact-form">
+          <label for="contact-name">Full name</label>
+          <input id="contact-name" name="contactName" type="text" required>
+
+          <label for="contact-email">Email address</label>
+          <input id="contact-email" name="contactEmail" type="email" required>
+
+          <label for="contact-phone">Phone number</label>
+          <input id="contact-phone" name="contactPhone" type="tel">
+
+          <label for="contact-type">What type of session are you looking for?</label>
+          <select id="contact-type" name="contactType" required>
+            <option value="">Select</option>
+            <option>Family Session</option>
+            <option>Maternity Session</option>
+            <option>Newborn Session</option>
+            <option>Birthday/Event</option>
+            <option>Other</option>
+          </select>
+
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="contactMessage" rows="4" placeholder="Tell me about your family or session goals"></textarea>
+
+          <button class="btn btn-primary" type="submit">Send inquiry</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Aria & Co. Photography • Built with care</small>
+    </div>
+  </footer>
+
+  <script src="js/slideshow.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+</body>
+</html>

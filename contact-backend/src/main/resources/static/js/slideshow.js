@@ -26,13 +26,20 @@
       const img = document.createElement("img");
       img.src = dataSrc;
       img.alt = slide.getAttribute("data-caption") || `Slide ${index + 1}`;
+      img.loading = "eager";
+      img.decoding = "sync";
       img.style.cssText = `
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
         display: block;
         opacity: 0;
         transition: opacity 0.5s ease;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        backface-visibility: hidden;
+        transform: translateZ(0);
       `;
 
       img.onload = () => (img.style.opacity = "1");
@@ -48,8 +55,8 @@
     }
   });
 
-  // Slide transition function
-  function goToSlide(targetIndex) {
+  // Slide transition function with direction support
+  function goToSlide(targetIndex, direction = "next") {
     if (isAnimating || targetIndex === currentIndex) return;
 
     // Normalize index
@@ -64,27 +71,40 @@
     // Reset all slides to default position
     slides.forEach((slide) => {
       slide.classList.remove("active", "sliding-out");
-      slide.style.transform = "translateX(100%)";
       slide.style.zIndex = "1";
     });
 
-    // Position current slide at center
-    currentSlide.style.transform = "translateX(0)";
-    currentSlide.style.zIndex = "2";
-
-    // Position next slide off-screen right
-    nextSlide.style.transform = "translateX(100%)";
-    nextSlide.style.zIndex = "3";
+    // Set up initial positions based on direction
+    if (direction === "next") {
+      // Next: slides come from right to left
+      slides.forEach((slide) => (slide.style.transform = "translateX(100%)"));
+      currentSlide.style.transform = "translateX(0)";
+      currentSlide.style.zIndex = "2";
+      nextSlide.style.transform = "translateX(100%)";
+      nextSlide.style.zIndex = "3";
+    } else {
+      // Previous: slides come from left to right
+      slides.forEach((slide) => (slide.style.transform = "translateX(-100%)"));
+      currentSlide.style.transform = "translateX(0)";
+      currentSlide.style.zIndex = "2";
+      nextSlide.style.transform = "translateX(-100%)";
+      nextSlide.style.zIndex = "3";
+    }
 
     // Force reflow
     nextSlide.offsetHeight;
 
     // Start animation
     requestAnimationFrame(() => {
-      // Current slide moves left
-      currentSlide.style.transform = "translateX(-100%)";
-      // Next slide moves to center
-      nextSlide.style.transform = "translateX(0)";
+      if (direction === "next") {
+        // Next: current slide moves left, new slide enters from right
+        currentSlide.style.transform = "translateX(-100%)";
+        nextSlide.style.transform = "translateX(0)";
+      } else {
+        // Previous: current slide moves right, new slide enters from left
+        currentSlide.style.transform = "translateX(100%)";
+        nextSlide.style.transform = "translateX(0)";
+      }
 
       // Update caption immediately
       if (caption) {
@@ -103,11 +123,11 @@
 
   // Navigation functions
   function nextSlide() {
-    goToSlide((currentIndex + 1) % slides.length);
+    goToSlide((currentIndex + 1) % slides.length, "next");
   }
 
   function prevSlide() {
-    goToSlide((currentIndex - 1 + slides.length) % slides.length);
+    goToSlide((currentIndex - 1 + slides.length) % slides.length, "prev");
   }
 
   // Auto-play control

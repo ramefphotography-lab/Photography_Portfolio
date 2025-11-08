@@ -60,6 +60,10 @@
 .ss-arrow:hover {
 	opacity: 1;
 }
+.ss-arrow:focus {
+	outline: none;
+	opacity: 1;
+}
 .ss-arrow svg {
 	display: block;
 }

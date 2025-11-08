@@ -78,16 +78,16 @@
 html,body{height:100%}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.45;background:var(--bg);color:var(--text)}
-.container{max-width:1200px;margin:0 auto;padding:28px}
+.container{max-width:1200px;margin:0 auto;padding:16px}
 
-/* Header & hero */
-.site-header{padding:18px 0 0}
+/* Header & hero - Compact size */
+.site-header{padding:8px 0 0}
 .header-inner{display:flex;align-items:center;justify-content:space-between}
 .brand h1{font-family:'Playfair Display',serif;margin:0;font-weight:600;font-size:clamp(20px,3.2vw,34px);letter-spacing:0.2px;color:var(--text)}
-.tagline{color:var(--muted);margin-top:6px;font-size:14px}
-.logo-img{width:64px;height:64px;object-fit:cover;border-radius:8px;margin-right:12px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-text h1{margin:0;font-size:18px}
+.tagline{color:var(--muted);margin-top:2px;font-size:12px}
+.logo-img{width:48px;height:48px;object-fit:cover;border-radius:6px;margin-right:8px}
+.brand{display:flex;align-items:center;gap:8px}
+.brand-text h1{margin:0;font-size:16px}
 .hero{margin-top:18px;background:transparent;padding:36px;border-radius:14px}
 .hero-inner{display:flex;gap:24px;align-items:center}
 .hero-text{flex:1}

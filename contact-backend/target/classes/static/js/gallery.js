@@ -321,20 +321,179 @@ document.addEventListener("DOMContentLoaded", function () {
           body: formData,
         });
         if (response.ok) {
-          alert("Thank you! Your inquiry was sent successfully.");
+          console.log("Response OK, calling showNotification for success"); // Debug log
+          console.log(
+            "showNotification function exists:",
+            typeof showNotification
+          ); // Debug log
+          if (typeof showNotification === "function") {
+            showNotification(
+              "Thank you! Your inquiry was sent successfully. I'll get back to you soon! ✨",
+              "success"
+            );
+          } else {
+            console.error("showNotification function not found!");
+          }
           contactForm.reset();
         } else {
-          alert(
-            "Sorry, there was a problem sending your inquiry. Please try again later."
+          showNotification(
+            "Sorry, there was a problem sending your inquiry. Please try again later.",
+            "error"
           );
         }
       } catch (err) {
-        alert("Network error. Please check your connection and try again.");
+        console.log("Calling showNotification for error"); // Debug log
+        console.log(
+          "showNotification function exists:",
+          typeof showNotification
+        ); // Debug log
+        if (typeof showNotification === "function") {
+          showNotification(
+            "Network error. Please check your connection and try again.",
+            "error"
+          );
+        } else {
+          console.error("showNotification function not found!");
+        }
       }
       if (btn) {
-        btn.textContent = "Send inquiry";
+        btn.textContent = "Let's Create Magic Together";
         btn.disabled = false;
       }
     });
   }
 })();
+
+// Beautiful notification system - moved outside IIFE to be globally accessible
+function showNotification(message, type = "success") {
+  console.log("showNotification called with:", message, type); // Debug log
+
+  try {
+    // Remove any existing notifications
+    const existingNotifications = document.querySelectorAll(".notification");
+    existingNotifications.forEach((n) => n.remove());
+
+    // Create notification element
+    const notification = document.createElement("div");
+    notification.className = `notification notification-${type}`;
+
+    const isSuccess = type === "success";
+    const icon = isSuccess ? "✨" : "⚠️";
+    const bgColor = isSuccess
+      ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      : "linear-gradient(135deg, #b08c69 0%, #a67c52 100%)";
+
+    notification.innerHTML = `
+      <div class="notification-content">
+        <span class="notification-icon">${icon}</span>
+        <span class="notification-message">${message}</span>
+        <button class="notification-close">&times;</button>
+      </div>
+    `;
+
+    // Styling
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${bgColor};
+      color: white;
+      padding: 0;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 10000;
+      min-width: 320px;
+      max-width: 500px;
+      transform: translateX(100%);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    `;
+
+    const content = notification.querySelector(".notification-content");
+    content.style.cssText = `
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+    `;
+
+    const iconEl = notification.querySelector(".notification-icon");
+    iconEl.style.cssText = `
+      font-size: 20px;
+      flex-shrink: 0;
+    `;
+
+    const messageEl = notification.querySelector(".notification-message");
+    messageEl.style.cssText = `
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.4;
+      font-weight: 500;
+    `;
+
+    const closeBtn = notification.querySelector(".notification-close");
+    closeBtn.style.cssText = `
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    `;
+
+    closeBtn.addEventListener("mouseenter", () => {
+      closeBtn.style.background = "rgba(255,255,255,0.1)";
+      closeBtn.style.color = "white";
+    });
+
+    closeBtn.addEventListener("mouseleave", () => {
+      closeBtn.style.background = "none";
+      closeBtn.style.color = "rgba(255,255,255,0.8)";
+    });
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Animate in
+    setTimeout(() => {
+      notification.style.transform = "translateX(0)";
+    }, 100);
+
+    // Auto remove and close button functionality
+    const removeNotification = () => {
+      notification.style.transform = "translateX(100%)";
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.remove();
+        }
+      }, 400);
+    };
+
+    closeBtn.addEventListener("click", removeNotification);
+
+    // Auto-remove after delay (longer for success messages)
+    const autoRemoveDelay = isSuccess ? 5000 : 4000;
+    setTimeout(removeNotification, autoRemoveDelay);
+  } catch (error) {
+    console.error("Notification system failed:", error);
+    console.error("Original message was:", message);
+    // Create a simple fallback notification if the fancy one fails
+    const fallback = document.createElement("div");
+    fallback.textContent = message;
+    fallback.style.cssText = `
+      position: fixed; top: 20px; right: 20px; background: #333; color: white;
+      padding: 15px; border-radius: 8px; z-index: 10000; max-width: 300px;
+    `;
+    document.body.appendChild(fallback);
+    setTimeout(() => fallback.remove(), 4000);
+  }
+}

@@ -15,16 +15,12 @@
   function initSlideshow() {
     const SLIDE_DURATION = 3000;
     const slides = document.querySelectorAll(".hero-slideshow .slide");
-    const caption = document.querySelector(
-      ".hero-slideshow .slideshow-caption"
-    );
     const prevBtn = document.getElementById("ss-prev");
     const nextBtn = document.getElementById("ss-next");
     const dots = document.querySelectorAll(".dot");
 
     console.log("Slideshow initialization:");
     console.log("- Slides found:", slides.length);
-    console.log("- Caption element:", caption ? "Found" : "NOT FOUND");
     console.log("- Dots found:", dots.length);
 
     let currentIndex = 0;
@@ -134,12 +130,11 @@
       // Force reflow
       nextSlide.offsetHeight;
 
-      // Update caption BEFORE animation starts
+      // Update index and dots
       currentIndex = targetIndex;
-      updateCaption(currentIndex);
+      updateDots();
 
-      // Update dots
-      updateDots(); // Start animation
+      // Start animation
       requestAnimationFrame(() => {
         if (direction === "next") {
           // Next: current slide moves left, new slide enters from right
@@ -151,11 +146,11 @@
           nextSlide.style.transform = "translateX(0)";
         }
 
+        // Caption functionality removed
+
         // Animation complete
         setTimeout(() => {
           isAnimating = false;
-          // Secondary caption update after animation
-          updateCaption(currentIndex);
         }, 1200);
       });
     }
@@ -185,53 +180,6 @@
     function restartAutoPlay() {
       stopAutoPlay();
       setTimeout(startAutoPlay, 100);
-    }
-
-    // Enhanced caption update function with reliability checks
-    function updateCaption(slideIndex) {
-      if (!caption) {
-        console.warn("Caption element not found");
-        return;
-      }
-      if (!slides[slideIndex]) {
-        console.warn(`Slide ${slideIndex} not found`);
-        return;
-      }
-
-      const newCaption = slides[slideIndex].getAttribute("data-caption") || "";
-
-      // Force display and update content
-      caption.style.cssText = `
-      display: block !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      position: absolute !important;
-      left: 48px !important;
-      bottom: 60px !important;
-      color: #ffffff !important;
-      z-index: 25 !important;
-      font-size: 20px !important;
-      max-width: 65% !important;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.9) !important;
-      font-weight: 400 !important;
-      pointer-events: none !important;
-      transition: all 0.4s ease !important;
-      background: transparent !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-      backdrop-filter: none !important;
-      border: none !important;
-      box-shadow: none !important;
-      line-height: 1.4 !important;
-      letter-spacing: 0.5px !important;
-    `;
-
-      caption.textContent = newCaption;
-
-      // Force reflow to ensure visibility
-      caption.offsetHeight;
-
-      console.log(`Caption updated: "${newCaption}"`);
     }
 
     // Dots functions
@@ -305,25 +253,8 @@
         }
       });
 
-      // Initialize caption with delay to ensure DOM is ready
-      setTimeout(() => {
-        updateCaption(currentIndex);
-      }, 100);
-
       // Initialize dots
       updateDots();
-
-      // Add caption verification system - checks every 2 seconds
-      setInterval(() => {
-        if (caption && slides[currentIndex]) {
-          const expectedCaption =
-            slides[currentIndex].getAttribute("data-caption") || "";
-          if (!caption.textContent || caption.textContent !== expectedCaption) {
-            console.log("Caption verification: updating caption");
-            updateCaption(currentIndex);
-          }
-        }
-      }, 2000);
 
       startAutoPlay();
     }

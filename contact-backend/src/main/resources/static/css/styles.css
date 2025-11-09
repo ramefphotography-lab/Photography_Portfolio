@@ -144,11 +144,11 @@ body{margin:0;padding-top:0;font-family:Inter, system-ui, -apple-system, 'Segoe 
 .brand h1{font-family:'Playfair Display',serif;margin:0;font-weight:600;font-size:clamp(20px,3.2vw,34px);letter-spacing:0.2px;color:var(--text)}
 .tagline{color:var(--muted);margin-top:2px;font-size:12px}
 .logo-img{
-  width:36px;
-  height:36px;
+  width:50px;
+  height:50px;
   object-fit:cover;
   border-radius:50%;
-  margin-right:6px;
+  margin-right:8px;
   box-shadow: 0 3px 12px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
@@ -156,7 +156,7 @@ body{margin:0;padding-top:0;font-family:Inter, system-ui, -apple-system, 'Segoe 
   transform: scale(1.05) rotate(2deg);
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
-.brand{display:flex;align-items:center;gap:8px}
+.brand{display:flex;align-items:center;gap:10px}
 .brand-text h1{margin:0;font-size:16px}
 
 /* Fixed header spacing - ensure content appears below header */
@@ -1148,30 +1148,6 @@ body > main:first-of-type {
 @media (max-width:900px){.feature-inner{flex-direction:column}.feature-image img{max-width:100%;height:auto}.contact.two-col{grid-template-columns:1fr;}}
 
 /* Premium slideshow UI elements */
-.slideshow-caption{
-  position:absolute !important;
-  left:48px;
-  bottom:60px;
-  color:#ffffff !important;
-  z-index:25 !important;
-  font-size:20px;
-  max-width:65%;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.9);
-  font-weight: 400;
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  backdrop-filter: none;
-  border: none;
-  box-shadow: none;
-  line-height: 1.4;
-  letter-spacing: 0.5px;
-}
 
 /* Slide dots */
 .slideshow-dots {
@@ -1365,8 +1341,9 @@ body > main:first-of-type {
 /* Footer */
 .site-footer{padding:28px 0 60px;color:var(--muted)}
 
-/* Accessibility focus ring */
-button:focus, a:focus, img:focus{outline:3px solid rgba(255,183,3,0.18);outline-offset:2px}
+/* Clean focus states - no yellow borders */
+button:focus, a:focus, img:focus{outline:none;}
+.logo:focus, .btn:focus, .btn-modern:focus {outline:none;}
 
 /* Advanced scroll animations and floating effects */
 @keyframes fadeInUp {

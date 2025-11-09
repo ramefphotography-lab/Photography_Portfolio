@@ -1252,24 +1252,24 @@ body > main:first-of-type {
 /* Enhanced Scroll Reveal Animations */
 .scroll-reveal {
   opacity: 0;
-  transition: all 1.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform, opacity;
 }
 
 .scroll-reveal.slide-left {
-  transform: translateX(-150px) scale(0.9);
+  transform: translateX(-120px) scale(0.92);
 }
 
 .scroll-reveal.slide-right {
-  transform: translateX(150px) scale(0.9);
+  transform: translateX(120px) scale(0.92);
 }
 
 .scroll-reveal.slide-up {
-  transform: translateY(100px) scale(0.9);
+  transform: translateY(80px) scale(0.92);
 }
 
 .scroll-reveal.slide-down {
-  transform: translateY(-100px) scale(0.9);
+  transform: translateY(-80px) scale(0.92);
 }
 
 .scroll-reveal.revealed {

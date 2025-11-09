@@ -36,8 +36,8 @@
   function initScrollReveal() {
     // More aggressive observer settings for better triggering
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
+      threshold: 0.15,
+      rootMargin: "0px 0px -100px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -47,6 +47,10 @@
           setTimeout(() => {
             entry.target.classList.add("revealed");
           }, 100);
+        } else {
+          // Remove the revealed class when element exits viewport
+          // This allows the animation to retrigger when scrolling back
+          entry.target.classList.remove("revealed");
         }
       });
     }, observerOptions);
@@ -56,9 +60,13 @@
       // Section animations now handled by individual elements within sections
       console.log("Setting up individual element animations...");
 
-      // Testimonial cards - stagger upward
+      // Testimonial cards - alternating upward cascade
       document.querySelectorAll(".testimonial-card").forEach((card, index) => {
-        card.classList.add("scroll-reveal", "slide-up");
+        // Testimonials alternate between slide-up and slight angle variations
+        const testimonialPatterns = ["slide-up", "slide-left", "slide-right"];
+        const direction =
+          testimonialPatterns[index % testimonialPatterns.length];
+        card.classList.add("scroll-reveal", direction);
         card.style.transitionDelay = `${index * 0.2}s`;
         observer.observe(card);
       });
@@ -104,24 +112,51 @@
         observer.observe(contactRight);
       }
 
-      // Services masonry - stagger from different directions
+      // Services masonry - dynamic directional animations
       const serviceCards = document.querySelectorAll(".service-card");
       serviceCards.forEach((card, index) => {
-        const directions = ["slide-left", "slide-right", "slide-up"];
-        const direction = directions[index % directions.length];
-        card.classList.remove("scroll-reveal", "slide-up"); // Remove previous classes
+        // More varied animation patterns
+        const patterns = [
+          "slide-left",
+          "slide-right",
+          "slide-up",
+          "slide-down",
+          "slide-left",
+          "slide-right", // Favor horizontal slides for services
+        ];
+        const direction = patterns[index % patterns.length];
+        card.classList.remove(
+          "scroll-reveal",
+          "slide-up",
+          "slide-left",
+          "slide-right",
+          "slide-down"
+        );
         card.classList.add("scroll-reveal", direction);
-        card.style.transitionDelay = `${index * 0.15}s`;
+        card.style.transitionDelay = `${index * 0.1}s`;
         observer.observe(card);
       });
 
-      // Portfolio highlights - alternating directions
+      // Portfolio highlights - dynamic alternating patterns
       const highlightItems = document.querySelectorAll(".highlight-item");
       highlightItems.forEach((item, index) => {
-        const direction = index % 2 === 0 ? "slide-left" : "slide-right";
-        item.classList.remove("scroll-reveal", "slide-up"); // Remove previous classes
+        // Create wave-like pattern: left, up, right, down, repeat
+        const wavePattern = [
+          "slide-left",
+          "slide-up",
+          "slide-right",
+          "slide-down",
+        ];
+        const direction = wavePattern[index % wavePattern.length];
+        item.classList.remove(
+          "scroll-reveal",
+          "slide-up",
+          "slide-left",
+          "slide-right",
+          "slide-down"
+        );
         item.classList.add("scroll-reveal", direction);
-        item.style.transitionDelay = `${index * 0.2}s`;
+        item.style.transitionDelay = `${index * 0.15}s`;
         observer.observe(item);
       });
     }, 500); // Wait 500ms after DOM load

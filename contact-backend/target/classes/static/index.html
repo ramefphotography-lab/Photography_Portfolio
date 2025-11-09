@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photoshoot Portfolio</title>
-  <meta name="description" content="A photography portfolio — responsive gallery with lightbox and keyboard navigation." />
-  <meta property="og:title" content="Photoshoot Portfolio" />
-  <meta property="og:description" content="A responsive gallery showcasing photography." />
+  <title>Eternal Focus | Where Love Stories Become Timeless Art</title>
+  <meta name="description" content="Fine art wedding & portrait photography that transforms your most precious moments into heirloom treasures. Creating magic through the lens of love." />
+  <meta property="og:title" content="Eternal Focus Photography | Timeless Love Stories" />
+  <meta property="og:description" content="Where love stories become timeless art. Fine art wedding & portrait photography that captures the poetry of your life." />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@700&display=swap">
   <link rel="stylesheet" href="css/styles.css" />
@@ -17,158 +17,394 @@
       <div class="brand">
         <!-- logo: replace with your logo image if you have one (logo.png) -->
         <a href="#top" class="logo">
-          <img src="images/logo/505715230_17851137966471795_6078421449897235296_n.jpg" alt="Lakshmi Gunapati Photography logo" class="logo-img">
+          <img src="images/logo/505715230_17851137966471795_6078421449897235296_n.jpg" alt="Pratap Peram Studio logo" class="logo-img">
         </a>
         <div class="brand-text">
-          <h1 style="font-family: 'Dancing Script', cursive; font-size: 2.5em;">Eternal Photography</h1>
-          <p class="tagline">Fine art wedding & portrait photography</p>
+          <h1 id="brand-title" style="font-family: 'Dancing Script', cursive; font-size: 1.8em;">
+            <span class="typewriter-text"></span>
+            <span class="typewriter-cursor">|</span>
+          </h1>
+          <p class="tagline" style="opacity: 0; animation: fadeInDelay 1s ease-in-out 3.5s forwards;">Where love stories become timeless art</p>
         </div>
       </div>
       <nav class="cta">
-        <a href="#contact" class="btn">Book a session</a>
+        <a href="#contact" class="btn">Let's Create Magic</a>
       </nav>
     </div>
     
   </header>
   <!-- Full-bleed cinematic slideshow (wedding images) -->
   <section class="hero-slideshow" aria-label="Featured wedding slideshow">
-    <!-- wedding-focused slides (wired to files in images/wedding) -->
-  <div class="slide" data-src="images/wedding-images/download.jpeg" data-caption="Wedding Celebration"></div>
-  <div class="slide" data-src="images/wedding-images/download (1).jpeg" data-caption="Bride & Groom"></div>
-  <div class="slide" data-src="images/wedding-images/download (2).jpeg" data-caption="Family Moment"></div>
+    <!-- wedding-focused slides (wired to high-quality images) -->
+  <div class="slide" data-src="images/wedding-images/aDDOxCdWJ-7kSgk5_Destination-Wedding-Photographer_North-Star-Gatherings-Wedding_Ariel-and-Matt_Idaho-Springs-CO-269_websize.avif" data-caption="Dancing into forever ✨"></div>
+  <div class="slide" data-src="images/wedding-images/screenshot-2024-02-09-at-2-11-50pm_51_1884541-171518306918804.jpeg" data-caption="Two hearts, one story 💕"></div>
+  <div class="slide" data-src="images/wedding-images/heart-529607_1280.jpg" data-caption="Love written in every detail 🤍"></div>
     <button id="ss-prev" class="ss-arrow" aria-label="Previous slide">
       <!-- left arrow -->
-      <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path fill="#222" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
     </button>
     <button id="ss-next" class="ss-arrow" aria-label="Next slide">
       <!-- right arrow -->
-      <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path fill="#222" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
     </button>
     <div class="slideshow-caption" aria-hidden="true"></div>
-  </section>
-
-  <!-- Emily intro section -->
-  <section class="emily-intro container">
-    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;max-width:600px;margin:0 auto;">
-      <img src="images/portfolio/cf8e6e73198d320579f6660445eb23e4.jpg" alt="Bride & groom — Signature wedding portrait" class="intro-img" style="width:340px;height:340px;object-fit:cover;border-radius:0;box-shadow:0 6px 24px rgba(0,0,0,0.08);margin-bottom:24px;">
-  <h2 style="margin-bottom:16px;">Hi, I’m Pratap, and I’m so glad you’re here!</h2>
-      <hr style="width:60px;margin:24px auto;border:0;border-top:2px solid #ddd;">
-      <p class="lead" style="margin-bottom:0;">I’m a family photographer based in Dallas, Texas, specializing in capturing the genuine, fleeting moments that make your family unique. My style is warm, natural, and timeless, focused on connection and the everyday beauty of life together.</p>
-  <a class="btn btn-primary" href="#contact" style="margin:32px auto 0 auto;">Let's connect</a>
-      <section class="services-intro" style="margin-top:48px;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:600px;">
-        <h3 style="font-size:2rem;margin-bottom:12px;">My services</h3>
-        <p style="font-size:1.15rem;margin-bottom:8px;">Cherish the joy of family life at every stage.</p>
-        <hr style="width:80px;margin:24px auto;border:0;border-top:2px solid #ddd;">
-        <p style="font-size:1.08rem;max-width:500px;">I create timeless photos of your little ones and the whole family, preserving the love, laughter, and meaningful moments you share together for years to come.</p>
-      </section>
-
-      <!-- Automatic sliding carousel row (3 photos) -->
-      </div>
-
-      <!-- Automatic sliding carousel row (3 photos, service-related) -->
-      <!-- Service Card Grid -->
-      <section class="service-card-grid" style="margin:56px auto 0 auto;max-width:1400px;">
-  <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:56px;align-items:start;width:100%;">
-          <!-- Card 1 -->
-          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;width:100%;">
-            <div style="position:relative;width:100%;height:340px;">
-              <img src="images/wedding/must-take-wedding-photos-bride-groom-walk-clary-prfeiffer-photography-0723-primary-b4221bcb1a2b43e6b0820a8c3e3bce52.jpg" alt="Season family mini" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div style="width:92%;margin-top:28px;text-align:center;">
-              <div style="font-size:1.35rem;font-weight:600;">Season family mini</div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
-            <div style="position:relative;width:100%;height:340px;">
-              <img src="images/wedding/wedding-photo-trends-2025-bride-groom-ceremony.webp" alt="Studio family mini" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div style="width:92%;margin-top:28px;text-align:center;">
-              <div style="font-size:1.35rem;font-weight:600;">Studio family mini</div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
-            <div style="position:relative;width:100%;height:340px;">
-              <img src="images/wedding/5c1bab450d1023fef7c248d55bb7248e.jpg" alt="Family session" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div style="width:92%;margin-top:28px;text-align:center;">
-              <div style="font-size:1.35rem;font-weight:600;">Family session</div>
-            </div>
-          </div>
-          <!-- Card 4 -->
-          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
-            <div style="position:relative;width:100%;height:340px;">
-              <img src="images/birthday/senior-man-blowing-out-birthday-cake-candles.jpg" alt="Maternity session" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div style="width:92%;margin-top:28px;text-align:center;">
-              <div style="font-size:1.35rem;font-weight:600;">Maternity session</div>
-            </div>
-          </div>
-          <!-- Card 5 -->
-          <div class="service-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-bottom:32px;">
-            <div style="position:relative;width:100%;height:340px;">
-              <img src="images/birthday/images.jpeg" alt="Newborn session" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-            <div style="width:92%;margin-top:28px;text-align:center;">
-              <div style="font-size:1.35rem;font-weight:600;">Newborn session</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      </section>
-
+    
+    <!-- Slide dots indicator -->
+    <div class="slideshow-dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
     </div>
   </section>
 
-  <main class="container">
-
-
-
-
-    <section id="contact" class="contact two-col">
-      <div class="contact-left">
-        <img src="images/home-opening/1135w-NpOlTznHhJc.webp" alt="Contact portrait">
+  <!-- Modern Artist Introduction with Floating Elements -->
+  <section class="artist-intro-modern">
+    <div class="intro-container">
+      <!-- Floating geometric shapes for modern aesthetic -->
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+      
+      <div class="intro-content">
+        <!-- Split layout with image and text -->
+        <div class="intro-left">
+          <div class="intro-image-wrapper">
+            <img src="images/wedding-images/myphoto.jpeg" alt="Pratap - Your Creative Storyteller" class="intro-portrait">
+            <div class="image-overlay"></div>
+          </div>
+        </div>
+        
+        <div class="intro-right">
+          <div class="intro-text-content">
+            <div class="intro-badge">✨ YOUR CREATIVE STORYTELLER</div>
+            <h2 class="intro-title">Capturing Life's<br><em>Most Beautiful</em><br>Chapters</h2>
+            <div class="intro-divider"></div>
+            <p class="intro-description">I'm Pratap, and I believe your story deserves more than just photos—it deserves art. Every stolen glance, every burst of laughter, every quiet moment of connection becomes a masterpiece when seen through the right lens.</p>
+            <div class="intro-features">
+              <div class="feature-item">
+                <span class="feature-icon">📸</span>
+                <span>Cinematic Storytelling</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">✨</span>
+                <span>Authentic Moments</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">🎨</span>
+                <span>Artistic Vision</span>
+              </div>
+            </div>
+            <a class="btn-modern primary" href="#contact">
+              <span>Start Your Journey</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="contact-right">
-        <h3>Let’s capture some memories!</h3>
-        <p>Welcome! I can't wait to meet your beautiful family and capture your precious moments. Ready to begin? Please complete the client inquiry form here.</p>
-        <form id="contact-form">
-          <label for="contact-name">Full name</label>
-          <input id="contact-name" name="contactName" type="text" required>
-
-          <label for="contact-email">Email address</label>
-          <input id="contact-email" name="contactEmail" type="email" required>
-
-          <label for="contact-phone">Phone number</label>
-          <input id="contact-phone" name="contactPhone" type="tel">
-
-          <label for="contact-type">What type of session are you looking for?</label>
-          <select id="contact-type" name="contactType" required>
-            <option value="">Select</option>
-            <option>Family Session</option>
-            <option>Maternity Session</option>
-            <option>Newborn Session</option>
-            <option>Birthday/Event</option>
-            <option>Other</option>
-          </select>
-
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="contactMessage" rows="4" placeholder="Tell me about your family or session goals"></textarea>
-
-          <button class="btn btn-primary" type="submit">Send inquiry</button>
-        </form>
+    </div>
+  </section>
+  <!-- Modern Services Showcase with Masonry Layout -->
+  <section class="services-modern">
+    <div class="services-container">
+      <div class="services-header">
+        <div class="services-badge">SIGNATURE EXPERIENCES</div>
+        <h2 class="services-title">Where Your Story<br>Becomes <em>Art</em></h2>
+        <p class="services-subtitle">Each session is crafted to capture the essence of your unique journey</p>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-  <small style="font-family: 'Dancing Script', cursive;">© <span id="year"></span> Eternal Photography • Built with care</small>
+      <!-- Masonry-style service cards with hover animations -->
+      <div class="services-masonry">
+        <!-- Large featured card -->
+        <div class="service-card featured" data-service="wedding">
+          <div class="card-image">
+            <img src="images/wedding/must-take-wedding-photos-bride-groom-walk-clary-prfeiffer-photography-0723-primary-b4221bcb1a2b43e6b0820a8c3e3bce52.jpg" alt="Wedding Photography">
+            <div class="card-overlay">
+              <div class="card-content">
+                <div class="card-icon">💕</div>
+                <h3>Love Stories</h3>
+                <p>Where fairytales come alive through authentic moments and cinematic beauty</p>
+                <div class="card-arrow">→</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid of smaller cards -->
+        <div class="service-card compact" data-service="family">
+          <div class="card-image">
+            <img src="images/family/premium_photo-1682090845582-0e8d40f99628.jpeg" alt="Family Photography">
+            <div class="card-overlay">
+              <div class="card-content">
+                <div class="card-icon">👨‍👩‍👧‍👦</div>
+                <h3>Family Bonds</h3>
+                <p>Capturing generations of love</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card compact" data-service="maternity">
+          <div class="card-image">
+            <img src="images/maternity/pexels-ermias-tarekegn-1107682-3228502.jpg" alt="Maternity Photography">
+            <div class="card-overlay">
+              <div class="card-content">
+                <div class="card-icon">🤱</div>
+                <h3>Expecting Joy</h3>
+                <p>The miracle before the miracle</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card compact" data-service="newborn">
+          <div class="card-image">
+            <img src="images/newborn/newborn-baby-baby-girl-angel-green-leaves-sleeping-baby-3840x2160-2393.jpg" alt="Newborn Photography">
+            <div class="card-overlay">
+              <div class="card-content">
+                <div class="card-icon">👶</div>
+                <h3>Fresh Arrivals</h3>
+                <p>Tiny fingers, infinite dreams</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card compact" data-service="graduation">
+          <div class="card-image">
+            <img src="images/graduation/graduation-pictures-xof3171xn2hpk2fy.jpg" alt="Graduation Photography">
+            <div class="card-overlay">
+              <div class="card-content">
+                <div class="card-icon">🎓</div>
+                <h3>Victory Moments</h3>
+                <p>Celebrating achievements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to action with modern button -->
+      <div class="services-cta">
+        <a class="btn-modern secondary" href="#contact">
+          <span>Explore All Services</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section with Modern Cards -->
+  <section class="testimonials-modern">
+    <div class="testimonials-container">
+      <div class="testimonials-header">
+        <div class="testimonials-badge">CLIENT LOVE</div>
+        <h2>Stories From The Heart</h2>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p>"Pratap didn't just capture our wedding day—he captured our souls. Every photo tells our story in the most beautiful way."</p>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>Sarah & Michael</h4>
+                <span>Wedding 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p>"The magic he creates is unreal. Our family photos are now the centerpiece of our home—pure art!"</p>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>The Johnson Family</h4>
+                <span>Family Session 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Highlights Section -->
+  <section class="portfolio-highlights">
+    <div class="highlights-container">
+      <div class="highlights-header">
+        <h2>Recent Artistry</h2>
+        <p>A glimpse into the magic we create together</p>
+      </div>
+      
+      <div class="highlights-grid">
+        <div class="highlight-item large">
+          <img src="images/wedding-images/aDDOxCdWJ-7kSgk5_Destination-Wedding-Photographer_North-Star-Gatherings-Wedding_Ariel-and-Matt_Idaho-Springs-CO-269_websize.avif" alt="Recent wedding photography">
+          <div class="highlight-overlay">
+            <div class="highlight-content">
+              <span class="highlight-category">Wedding</span>
+              <h3>Sarah & Michael</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="highlight-item">
+          <img src="images/family/premium_photo-1682090845582-0e8d40f99628.jpeg" alt="Family portrait">
+          <div class="highlight-overlay">
+            <div class="highlight-content">
+              <span class="highlight-category">Family</span>
+              <h3>The Johnsons</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="highlight-item">
+          <img src="images/maternity/pexels-ermias-tarekegn-1107682-3228502.jpg" alt="Maternity session">
+          <div class="highlight-overlay">
+            <div class="highlight-content">
+              <span class="highlight-category">Maternity</span>
+              <h3>Expecting Joy</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="highlights-cta">
+        <a href="#contact" class="btn-modern primary">View Full Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Contact Section -->
+  <section id="contact" class="contact-modern">
+    <div class="contact-container">
+      <div class="contact-header">
+        <div class="contact-badge">GET IN TOUCH</div>
+        <h2>Let's Paint Your Story</h2>
+        <p>Every love story deserves to be told in breathtaking frames. Share your vision and let's create something magical together.</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-left">
+          <div class="contact-image-wrapper">
+            <img src="images/camera/360_F_115266670_ae82gJW12cSMq19pQj4nW8mhwN9MJZ1k.jpg" alt="Contact Pratap">
+            <div class="contact-info-overlay">
+              <div class="contact-info">
+                <h3>Ready to Create Magic?</h3>
+                <p>Let's bring your vision to life through beautiful photography</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-right">
+          <div class="contact-form-wrapper">
+            <form id="contact-form" class="modern-form">
+              <div class="form-group">
+                <label for="contact-name">Full Name</label>
+                <input id="contact-name" name="contactName" type="text" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input id="contact-email" name="contactEmail" type="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-phone">Phone Number</label>
+                <input id="contact-phone" name="contactPhone" type="tel">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-type">What magic shall we create together?</label>
+                <select id="contact-type" name="contactType" required>
+                  <option value="">Choose your adventure</option>
+                  <option>Love Stories (Weddings)</option>
+                  <option>Soul Connections (Family)</option>
+                  <option>Miracle Growing (Maternity)</option>
+                  <option>Fresh Beginnings (Newborn)</option>
+                  <option>Victory Moments (Events)</option>
+                  <option>Something Uniquely You</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Share your vision with me</label>
+                <textarea id="contact-message" name="contactMessage" rows="4" placeholder="Tell me about your dreams, your story, what makes your heart sing... I can't wait to bring it to life through my lens ✨"></textarea>
+              </div>
+
+              <button class="btn-modern primary large" type="submit">
+                <span>Let's Create Magic Together</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Footer -->
+  <footer class="footer-modern">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>Eternal Focus</h3>
+          <p>Capturing life's most beautiful chapters with artistic vision and heartfelt passion.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Services</h4>
+            <a href="#services">Wedding Photography</a>
+            <a href="#services">Family Portraits</a>
+            <a href="#services">Maternity Sessions</a>
+            <a href="#services">Event Photography</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Connect</h4>
+            <a href="#contact">Get In Touch</a>
+            <a href="tel:+1234567890">Call Us</a>
+            <a href="mailto:hello@eternalfocus.com">Email</a>
+            <a href="#portfolio">View Portfolio</a>
+          </div>
+        </div>
+        
+        <div class="footer-social">
+          <h4>Follow the Journey</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/eternalfocus_photography?igsh=b2ppNm5sZHQ2ZWJs" target="_blank" rel="noopener noreferrer" class="social-link">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <p>© <span id="year"></span> Eternal Focus Photography • Crafted with ❤️ and passion</p>
+        </div>
+        <div class="footer-credit">
+          <p>Pratap Peram • Professional Photography</p>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script src="js/slideshow.js" defer></script>
   <script src="js/gallery.js" defer></script>
+  <script src="js/premium-effects.js" defer></script>
 </body>
 </html>

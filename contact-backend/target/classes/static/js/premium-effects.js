@@ -2,6 +2,36 @@
 (function () {
   "use strict";
 
+  // Immediate header fix - run as soon as script loads
+  (function immediateHeaderFix() {
+    function fixHeader() {
+      const header = document.querySelector(".site-header");
+      if (header) {
+        header.style.background = "rgba(255, 255, 255, 0.95)";
+        header.style.color = "#222222";
+
+        // Fix all text elements
+        const allText = header.querySelectorAll("h1, .tagline, .btn");
+        allText.forEach((el) => {
+          el.style.color = "#222222";
+        });
+      }
+    }
+
+    // Try immediately
+    fixHeader();
+
+    // Try again after a tiny delay
+    setTimeout(fixHeader, 10);
+
+    // And when DOM is ready
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fixHeader);
+    } else {
+      fixHeader();
+    }
+  })();
+
   // Typewriter effect for brand title
   function initTypewriter() {
     const textElement = document.querySelector(".typewriter-text");
@@ -190,7 +220,7 @@
     });
   }
 
-  // Dynamic header background on scroll
+  // Dynamic header background on scroll - consistently white
   function initDynamicHeader() {
     const header = document.querySelector(".site-header");
     if (!header) return;
@@ -198,13 +228,15 @@
     window.addEventListener("scroll", () => {
       const scrolled = window.pageYOffset;
       if (scrolled > 50) {
+        header.style.background = "rgba(255, 255, 255, 0.98)";
+        header.style.backdropFilter = "blur(20px)";
+        header.style.boxShadow = "0 2px 16px rgba(0,0,0,0.15)";
+        header.style.borderBottom = "1px solid rgba(0,0,0,0.15)";
+      } else {
         header.style.background = "rgba(255, 255, 255, 0.95)";
         header.style.backdropFilter = "blur(20px)";
-        header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
-      } else {
-        header.style.background = "rgba(255, 255, 255, 0.05)";
-        header.style.backdropFilter = "blur(10px)";
-        header.style.boxShadow = "none";
+        header.style.boxShadow = "0 2px 12px rgba(0,0,0,0.1)";
+        header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
       }
     });
   }
@@ -250,8 +282,31 @@
     }, 100);
   }
 
+  // Immediately ensure header is white to prevent flash
+  function ensureHeaderStyling() {
+    const header = document.querySelector(".site-header");
+    if (header) {
+      header.style.background = "rgba(255, 255, 255, 0.95)";
+      header.style.backdropFilter = "blur(20px)";
+      header.style.borderBottom = "1px solid rgba(0, 0, 0, 0.1)";
+      header.style.boxShadow = "0 2px 12px rgba(0, 0, 0, 0.1)";
+
+      // Ensure all text is black
+      const brandH1 = header.querySelector(".brand h1");
+      const brandTextH1 = header.querySelector(".brand-text h1");
+      const tagline = header.querySelector(".tagline");
+      const btn = header.querySelector(".cta .btn");
+
+      if (brandH1) brandH1.style.color = "#222222";
+      if (brandTextH1) brandTextH1.style.color = "#222222";
+      if (tagline) tagline.style.color = "#666666";
+      if (btn) btn.style.color = "#222222";
+    }
+  }
+
   // Initialize all effects when DOM is loaded
   document.addEventListener("DOMContentLoaded", () => {
+    ensureHeaderStyling();
     initTypewriter();
     initSmoothScrolling();
     initParallax();

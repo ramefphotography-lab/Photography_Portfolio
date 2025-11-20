@@ -36,7 +36,7 @@
   function initTypewriter() {
     const textElement = document.querySelector(".typewriter-text");
     const cursorElement = document.querySelector(".typewriter-cursor");
-  const fullText = "Enternal Focus Photography";
+    const fullText = "Eternal Focus Photography";
 
     if (!textElement) return;
 

@@ -304,6 +304,87 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   figures.forEach((f) => observer.observe(f));
 
+  // Real-time email validation
+  const emailInput = document.getElementById("contact-email");
+  if (emailInput) {
+    const emailError = document.createElement("div");
+    emailError.className = "field-error";
+    emailError.style.cssText = `
+      color: #d32f2f;
+      font-size: 0.875rem;
+      margin-top: 4px;
+      display: none;
+    `;
+    emailInput.parentElement.appendChild(emailError);
+
+    emailInput.addEventListener("blur", () => {
+      const value = emailInput.value.trim();
+      const emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+
+      if (value && !emailPattern.test(value)) {
+        emailError.textContent =
+          "Please enter a valid email address (e.g., name@example.com)";
+        emailError.style.display = "block";
+        emailInput.style.borderColor = "#d32f2f";
+      } else {
+        emailError.style.display = "none";
+        emailInput.style.borderColor = "";
+      }
+    });
+  }
+
+  // Real-time phone number validation
+  const phoneInput = document.getElementById("contact-phone");
+  if (phoneInput) {
+    // Create error message element
+    const phoneError = document.createElement("div");
+    phoneError.className = "field-error";
+    phoneError.style.cssText = `
+      color: #d32f2f;
+      font-size: 0.875rem;
+      margin-top: 4px;
+      display: none;
+    `;
+    phoneInput.parentElement.appendChild(phoneError);
+
+    phoneInput.addEventListener("input", (e) => {
+      let value = e.target.value;
+
+      // Remove all non-numeric characters
+      const digitsOnly = value.replace(/[^0-9]/g, "");
+
+      // Update input to only contain digits
+      e.target.value = digitsOnly;
+
+      // Check length
+      if (digitsOnly.length === 0) {
+        phoneError.style.display = "none";
+        phoneInput.style.borderColor = "";
+      } else if (digitsOnly.length < 10) {
+        phoneError.textContent = `Please enter exactly 10 digits (${digitsOnly.length}/10)`;
+        phoneError.style.display = "block";
+        phoneInput.style.borderColor = "#d32f2f";
+      } else if (digitsOnly.length === 10) {
+        phoneError.style.display = "none";
+        phoneInput.style.borderColor = "#4caf50"; // Green for valid
+      } else {
+        // More than 10 digits - truncate
+        e.target.value = digitsOnly.substring(0, 10);
+        phoneError.style.display = "none";
+        phoneInput.style.borderColor = "#4caf50";
+      }
+    });
+
+    phoneInput.addEventListener("blur", () => {
+      const value = phoneInput.value.trim();
+      if (value.length > 0 && value.length !== 10) {
+        phoneError.textContent = `Please enter exactly 10 digits (${value.length}/10)`;
+        phoneError.style.display = "block";
+        phoneInput.style.borderColor = "#d32f2f";
+      }
+    });
+  }
+
   // contact form handler — send to backend
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {

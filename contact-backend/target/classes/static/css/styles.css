@@ -874,6 +874,12 @@ body > main:first-of-type {
   display: block;
 }
 
+.form-group label .required {
+  color: #d32f2f;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {

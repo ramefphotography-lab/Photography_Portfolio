@@ -18,6 +18,11 @@ public class ContactController {
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
         "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
     );
+    
+    // Phone validation pattern (exactly 10 digits only)
+    private static final Pattern PHONE_PATTERN = Pattern.compile(
+        "^[0-9]{10}$"
+    );
 
     @PostMapping("/send-inquiry")
     public ResponseEntity<String> sendInquiry(
@@ -39,6 +44,14 @@ public class ContactController {
         // Validate required fields
         if (contactName == null || contactName.trim().isEmpty()) {
             return ResponseEntity.badRequest().body("Name is required");
+        }
+        
+        if (contactPhone == null || contactPhone.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("Phone number is required");
+        }
+        
+        if (!PHONE_PATTERN.matcher(contactPhone.trim()).matches()) {
+            return ResponseEntity.badRequest().body("Phone number must be exactly 10 digits. Only numbers are allowed.");
         }
         
         if (contactType == null || contactType.trim().isEmpty()) {

@@ -380,8 +380,8 @@ function showNotification(message, type = "success") {
     const isSuccess = type === "success";
     const icon = isSuccess ? "✨" : "⚠️";
     const bgColor = isSuccess
-      ? "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-      : "linear-gradient(135deg, #b08c69 0%, #a67c52 100%)";
+      ? "linear-gradient(135deg, rgb(83, 67, 52) 0%, rgb(103, 87, 72) 100%)"
+      : "linear-gradient(135deg, rgb(150, 80, 60) 0%, rgb(120, 60, 50) 100%)";
 
     notification.innerHTML = `
       <div class="notification-content">

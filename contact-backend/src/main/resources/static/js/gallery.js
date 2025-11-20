@@ -361,16 +361,21 @@ document.addEventListener("DOMContentLoaded", function () {
         phoneError.style.display = "none";
         phoneInput.style.borderColor = "";
       } else if (digitsOnly.length < 10) {
-        phoneError.textContent = `Please enter exactly 10 digits (${digitsOnly.length}/10)`;
+        phoneError.textContent = "Please enter 10 digits phone number";
         phoneError.style.display = "block";
+        phoneError.style.color = "#d32f2f";
         phoneInput.style.borderColor = "#d32f2f";
       } else if (digitsOnly.length === 10) {
-        phoneError.style.display = "none";
+        phoneError.textContent = "✓ Valid phone number";
+        phoneError.style.display = "block";
+        phoneError.style.color = "#4caf50";
         phoneInput.style.borderColor = "#4caf50"; // Green for valid
       } else {
         // More than 10 digits - truncate
         e.target.value = digitsOnly.substring(0, 10);
-        phoneError.style.display = "none";
+        phoneError.textContent = "✓ Valid phone number";
+        phoneError.style.display = "block";
+        phoneError.style.color = "#4caf50";
         phoneInput.style.borderColor = "#4caf50";
       }
     });
@@ -378,8 +383,9 @@ document.addEventListener("DOMContentLoaded", function () {
     phoneInput.addEventListener("blur", () => {
       const value = phoneInput.value.trim();
       if (value.length > 0 && value.length !== 10) {
-        phoneError.textContent = `Please enter exactly 10 digits (${value.length}/10)`;
+        phoneError.textContent = "Please enter 10 digits phone number";
         phoneError.style.display = "block";
+        phoneError.style.color = "#d32f2f";
         phoneInput.style.borderColor = "#d32f2f";
       }
     });

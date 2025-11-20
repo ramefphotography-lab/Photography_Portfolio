@@ -497,3 +497,174 @@ function showNotification(message, type = "success") {
     setTimeout(() => fallback.remove(), 4000);
   }
 }
+
+// Service Gallery System
+const serviceGalleryData = {
+  wedding: {
+    title: "Wedding Photography",
+    images: [
+      "images/Wedding/DSC00224.jpg",
+      "images/wedding/DSC09908.jpg",
+      "images/photoshoot/DSC02033.jpg",
+      "images/photoshoot/cropped.jpeg",
+      "images/Wedding/DSC00224.jpg",
+      "images/wedding/DSC09908.jpg",
+    ],
+  },
+  family: {
+    title: "Family Photography",
+    images: [
+      "images/wedding/DSC09908.jpg",
+      "images/baby-with-family/DSC06300.jpg",
+      "images/photoshoot/DSC02033.jpg",
+      "images/photoshoot/cropped.jpeg",
+      "images/Wedding/DSC00224.jpg",
+    ],
+  },
+  maternity: {
+    title: "Maternity Photography",
+    images: [
+      "images/maternity/white.jpg",
+      "images/photoshoot/cropped.jpeg",
+      "images/Wedding/DSC00224.jpg",
+      "images/wedding/DSC09908.jpg",
+      "images/photoshoot/DSC02033.jpg",
+    ],
+  },
+  newborn: {
+    title: "Newborn Photography",
+    images: [
+      "images/baby-with-family/DSC06300.jpg",
+      "images/maternity/white.jpg",
+      "images/photoshoot/DSC02033.jpg",
+      "images/photoshoot/cropped.jpeg",
+      "images/baby-with-family/DSC06300.jpg",
+    ],
+  },
+  graduation: {
+    title: "Graduation Photography",
+    images: [
+      "images/graduation/DSC00918.jpg",
+      "images/photoshoot/DSC02033.jpg",
+      "images/wedding/DSC09908.jpg",
+      "images/graduation/DSC00918.jpg",
+      "images/photoshoot/cropped.jpeg",
+    ],
+  },
+};
+
+function initServiceGallery() {
+  const modal = document.getElementById("service-gallery-modal");
+  const closeBtn = modal.querySelector(".gallery-close");
+  const mainImage = document.getElementById("gallery-main-image");
+  const galleryTitle = document.getElementById("gallery-title");
+  const thumbnailsContainer = document.getElementById("gallery-thumbnails");
+  const prevBtn = modal.querySelector(".gallery-prev");
+  const nextBtn = modal.querySelector(".gallery-next");
+
+  let currentService = null;
+  let currentImageIndex = 0;
+
+  // Open gallery when service card is clicked
+  document.querySelectorAll(".service-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const serviceType = card.dataset.service;
+      if (serviceGalleryData[serviceType]) {
+        openGallery(serviceType);
+      }
+    });
+  });
+
+  function openGallery(serviceType) {
+    currentService = serviceType;
+    currentImageIndex = 0;
+    const data = serviceGalleryData[serviceType];
+
+    galleryTitle.textContent = data.title;
+
+    // Clear and populate thumbnails
+    thumbnailsContainer.innerHTML = "";
+    data.images.forEach((imgSrc, index) => {
+      const thumb = document.createElement("img");
+      thumb.src = imgSrc;
+      thumb.alt = `${data.title} ${index + 1}`;
+      thumb.className = "gallery-thumbnail";
+      if (index === 0) thumb.classList.add("active");
+      thumb.addEventListener("click", () => showImage(index));
+      thumbnailsContainer.appendChild(thumb);
+    });
+
+    showImage(0);
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function showImage(index) {
+    const data = serviceGalleryData[currentService];
+    currentImageIndex = index;
+    mainImage.src = data.images[index];
+    mainImage.alt = `${data.title} ${index + 1}`;
+
+    // Update thumbnail active state
+    thumbnailsContainer
+      .querySelectorAll(".gallery-thumbnail")
+      .forEach((thumb, i) => {
+        thumb.classList.toggle("active", i === index);
+      });
+
+    // Update navigation buttons
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === data.images.length - 1;
+  }
+
+  function closeGallery() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      mainImage.src = "";
+      thumbnailsContainer.innerHTML = "";
+    }, 300);
+  }
+
+  // Event listeners
+  closeBtn.addEventListener("click", closeGallery);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeGallery();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentImageIndex > 0) {
+      showImage(currentImageIndex - 1);
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const data = serviceGalleryData[currentService];
+    if (currentImageIndex < data.images.length - 1) {
+      showImage(currentImageIndex + 1);
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!modal.classList.contains("active")) return;
+
+    if (e.key === "Escape") {
+      closeGallery();
+    } else if (e.key === "ArrowLeft") {
+      prevBtn.click();
+    } else if (e.key === "ArrowRight") {
+      nextBtn.click();
+    }
+  });
+}
+
+// Initialize gallery when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initServiceGallery);
+} else {
+  initServiceGallery();
+}

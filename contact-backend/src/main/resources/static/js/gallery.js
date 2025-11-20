@@ -582,17 +582,8 @@ function initServiceGallery() {
 
     galleryTitle.textContent = data.title;
 
-    // Clear and populate thumbnails
-    thumbnailsContainer.innerHTML = "";
-    data.images.forEach((imgSrc, index) => {
-      const thumb = document.createElement("img");
-      thumb.src = imgSrc;
-      thumb.alt = `${data.title} ${index + 1}`;
-      thumb.className = "gallery-thumbnail";
-      if (index === 0) thumb.classList.add("active");
-      thumb.addEventListener("click", () => showImage(index));
-      thumbnailsContainer.appendChild(thumb);
-    });
+    // Hide thumbnails (no longer needed)
+    thumbnailsContainer.style.display = "none";
 
     showImage(0);
     modal.classList.add("active");
@@ -605,16 +596,9 @@ function initServiceGallery() {
     mainImage.src = data.images[index];
     mainImage.alt = `${data.title} ${index + 1}`;
 
-    // Update thumbnail active state
-    thumbnailsContainer
-      .querySelectorAll(".gallery-thumbnail")
-      .forEach((thumb, i) => {
-        thumb.classList.toggle("active", i === index);
-      });
-
-    // Update navigation buttons
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === data.images.length - 1;
+    // Navigation buttons are always enabled for circular navigation
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
   }
 
   function closeGallery() {
@@ -636,15 +620,22 @@ function initServiceGallery() {
   });
 
   prevBtn.addEventListener("click", () => {
+    const data = serviceGalleryData[currentService];
+    // Circular navigation - go to last photo if at first
     if (currentImageIndex > 0) {
       showImage(currentImageIndex - 1);
+    } else {
+      showImage(data.images.length - 1);
     }
   });
 
   nextBtn.addEventListener("click", () => {
     const data = serviceGalleryData[currentService];
+    // Circular navigation - go to first photo if at last
     if (currentImageIndex < data.images.length - 1) {
       showImage(currentImageIndex + 1);
+    } else {
+      showImage(0);
     }
   });
 

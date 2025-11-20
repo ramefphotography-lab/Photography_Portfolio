@@ -334,15 +334,21 @@
 
               <div class="form-group">
                 <label for="contact-type">What type of photography do you need?</label>
-                <select id="contact-type" name="contactType" required>
-                  <option value="">Select a service</option>
-                  <option>Wedding Photography</option>
-                  <option>Family Photography</option>
-                  <option>Maternity Photography</option>
-                  <option>Newborn Photography</option>
-                  <option>Event Photography</option>
-                  <option>Other (please specify)</option>
-                </select>
+                <!-- Custom accessible select replacing native select for consistent styling -->
+                <div class="custom-select" id="contact-type-select" data-name="contactType" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+                  <button type="button" class="custom-select-trigger" id="contact-type-trigger" aria-controls="contact-type-list" aria-label="Select a service">Select a service</button>
+                  <ul class="custom-select-options" id="contact-type-list" role="listbox" tabindex="-1">
+                    <li role="option" data-value="">Select a service</li>
+                    <li role="option" data-value="Wedding Photography">Wedding Photography</li>
+                    <li role="option" data-value="Family Photography">Family Photography</li>
+                    <li role="option" data-value="Maternity Photography">Maternity Photography</li>
+                    <li role="option" data-value="Newborn Photography">Newborn Photography</li>
+                    <li role="option" data-value="Event Photography">Event Photography</li>
+                    <li role="option" data-value="Other (please specify)">Other (please specify)</li>
+                  </ul>
+                  <!-- hidden input to keep form submission the same -->
+                  <input type="hidden" name="contactType" id="contact-type" required>
+                </div>
               </div>
 
               <div class="form-group">
@@ -415,6 +421,7 @@
   </footer>
 
   <script src="js/slideshow.js?v=1.9" defer></script>
+  <script src="js/custom-select.js?v=1.0" defer></script>
   <script src="js/gallery.js?v=1.9" defer></script>
   <script src="js/premium-effects.js?v=1.9" defer></script>
 </body>

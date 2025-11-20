@@ -66,18 +66,17 @@
       
       <div class="intro-content">
         <!-- Split layout with image and text -->
-        <div class="intro-left">
+        <!-- <div class="intro-left">
           <div class="intro-image-wrapper">
-            <img src="images/wedding-images/myphoto.jpeg" alt="Pratap - Your Creative Storyteller" class="intro-portrait">
+            <img src="" alt="Pratap - Your Creative Storyteller" class="intro-portrait">
             <div class="image-overlay"></div>
           </div>
-        </div>
+        </div> -->
         
-        <div class="intro-right">
+        <div class="intro-center">
           <div class="intro-text-content">
             <div class="intro-badge">📸 PROFESSIONAL PHOTOGRAPHER</div>
             <h3 class="intro-title">Hi, I'm Pratap, I'm so glad you're here!!!</h3>
-            <div class="intro-divider"></div>
             <p class="intro-description">I believe your story deserves more than just photos—it deserves art. Every stolen glance, every burst of laughter, every quiet moment of connection becomes a masterpiece when seen through the right lens.</p>
             <a class="btn-modern primary" href="#contact">
               <span>Book a Session</span>
@@ -334,21 +333,15 @@
 
               <div class="form-group">
                 <label for="contact-type">What type of photography do you need?</label>
-                <!-- Custom accessible select replacing native select for consistent styling -->
-                <div class="custom-select" id="contact-type-select" data-name="contactType" role="combobox" aria-haspopup="listbox" aria-expanded="false">
-                  <button type="button" class="custom-select-trigger" id="contact-type-trigger" aria-controls="contact-type-list" aria-label="Select a service">Select a service</button>
-                  <ul class="custom-select-options" id="contact-type-list" role="listbox" tabindex="-1">
-                    <li role="option" data-value="">Select a service</li>
-                    <li role="option" data-value="Wedding Photography">Wedding Photography</li>
-                    <li role="option" data-value="Family Photography">Family Photography</li>
-                    <li role="option" data-value="Maternity Photography">Maternity Photography</li>
-                    <li role="option" data-value="Newborn Photography">Newborn Photography</li>
-                    <li role="option" data-value="Event Photography">Event Photography</li>
-                    <li role="option" data-value="Other (please specify)">Other (please specify)</li>
-                  </ul>
-                  <!-- hidden input to keep form submission the same -->
-                  <input type="hidden" name="contactType" id="contact-type" required>
-                </div>
+                <select id="contact-type" name="contactType" required>
+                  <option value="">Select a service</option>
+                  <option>Wedding Photography</option>
+                  <option>Family Photography</option>
+                  <option>Maternity Photography</option>
+                  <option>Newborn Photography</option>
+                  <option>Event Photography</option>
+                  <option>Other (please specify)</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -374,7 +367,7 @@
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-brand">
-          <h3>Pratap Photography</h3>
+          <h3>Eternal focus Photography</h3>
           <p>Professional wedding and portrait photographer serving couples and families with high-quality photography services.</p>
         </div>
         
@@ -382,9 +375,13 @@
           <div class="footer-column">
             <h4>Services</h4>
             <a href="#services">Wedding Photography</a>
-            <a href="#services">Family Portraits</a>
-            <a href="#services">Maternity Sessions</a>
+            <a href="#services">Proposal shoot</a>
+            <a href="#services">Baby shower & General reveal</a>
+            <a href="#services">Maternity Session</a>
+            <a href="#services">Graduation Shoot</a>
             <a href="#services">Event Photography</a>
+            <a href="#services">Birthday Shoot</a>
+            <a href="#services">House Warming</a>
           </div>
           
           <div class="footer-column">
@@ -411,7 +408,7 @@
       
       <div class="footer-bottom">
         <div class="footer-copyright">
-          <p>© <span id="year"></span> Pratap Photography • All rights reserved</p>
+          <p>© <span id="year"></span> Eternal Focus Photography • All rights reserved</p>
         </div>
         <div class="footer-credit">
           <p>Pratap Peram • Professional Photography</p>
@@ -421,7 +418,6 @@
   </footer>
 
   <script src="js/slideshow.js?v=1.9" defer></script>
-  <script src="js/custom-select.js?v=1.0" defer></script>
   <script src="js/gallery.js?v=1.9" defer></script>
   <script src="js/premium-effects.js?v=1.9" defer></script>
 </body>

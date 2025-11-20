@@ -226,9 +226,11 @@ body > main:first-of-type {
 
 .intro-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr;
+  gap: 40px;
   align-items: center;
+  justify-items: center;
+  text-align: center;
 }
 
 .intro-image-wrapper {

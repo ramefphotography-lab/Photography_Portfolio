@@ -1165,6 +1165,7 @@ select option:checked {
     font-size: 14px;
     border-radius: 20px;
     white-space: nowrap;
+    color: black;
   }
   
   /* Mobile Slideshow Optimizations */

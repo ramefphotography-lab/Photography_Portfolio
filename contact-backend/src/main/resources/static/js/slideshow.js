@@ -105,56 +105,52 @@
       const currentSlide = slides[currentIndex];
       const nextSlide = slides[targetIndex];
 
-      // Reset all slides to default position
-      slides.forEach((slide) => {
-        slide.classList.remove("active", "sliding-out");
-        slide.style.zIndex = "1";
-      });
-
-      // Set up initial positions based on direction
-      if (direction === "next") {
-        // Next: slides come from right to left
-        slides.forEach((slide) => (slide.style.transform = "translateX(100%)"));
-        currentSlide.style.transform = "translateX(0)";
-        currentSlide.style.zIndex = "2";
-        nextSlide.style.transform = "translateX(100%)";
-        nextSlide.style.zIndex = "3";
-      } else {
-        // Previous: slides come from left to right
-        slides.forEach(
-          (slide) => (slide.style.transform = "translateX(-100%)")
-        );
-        currentSlide.style.transform = "translateX(0)";
-        currentSlide.style.zIndex = "2";
-        nextSlide.style.transform = "translateX(-100%)";
-        nextSlide.style.zIndex = "3";
-      }
-
-      // Force reflow
-      nextSlide.offsetHeight;
-
-      // Update index and dots
+      // Update index and dots first
       currentIndex = targetIndex;
       updateDots();
 
-      // Start animation
-      requestAnimationFrame(() => {
-        if (direction === "next") {
-          // Next: current slide moves left, new slide enters from right
-          currentSlide.style.transform = "translateX(-100%)";
-          nextSlide.style.transform = "translateX(0)";
-        } else {
-          // Previous: current slide moves right, new slide enters from left
-          currentSlide.style.transform = "translateX(100%)";
-          nextSlide.style.transform = "translateX(0)";
+      // Prepare slides without transition
+      slides.forEach((slide) => {
+        slide.style.transition = "none";
+        slide.classList.remove("active");
+        if (slide !== currentSlide && slide !== nextSlide) {
+          slide.style.zIndex = "1";
+          slide.style.transform =
+            direction === "next" ? "translateX(100%)" : "translateX(-100%)";
         }
+      });
 
-        // Caption functionality removed
+      // Position the current and next slides
+      currentSlide.style.zIndex = "2";
+      currentSlide.style.transform = "translateX(0)";
 
-        // Animation complete
-        setTimeout(() => {
-          isAnimating = false;
-        }, 1200);
+      nextSlide.style.zIndex = "3";
+      nextSlide.style.transform =
+        direction === "next" ? "translateX(100%)" : "translateX(-100%)";
+
+      // Force reflow to ensure the positions are applied
+      void nextSlide.offsetHeight;
+
+      // Re-enable transitions with a smooth easing
+      requestAnimationFrame(() => {
+        slides.forEach((slide) => {
+          slide.style.transition =
+            "transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+        });
+
+        // Perform the animation
+        requestAnimationFrame(() => {
+          currentSlide.style.transform =
+            direction === "next" ? "translateX(-100%)" : "translateX(100%)";
+          nextSlide.style.transform = "translateX(0)";
+          nextSlide.classList.add("active");
+
+          // Animation complete
+          setTimeout(() => {
+            currentSlide.classList.remove("active");
+            isAnimating = false;
+          }, 1000);
+        });
       });
     }
 

@@ -38,14 +38,17 @@
   width: 100%;
   height: 100%;
   background: #000000;
-  transform: translateX(100%);
-  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translateX(100%) translateZ(0);
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 2;
   will-change: transform;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* Ken Burns effect - active slide images slowly zoom and pan */
@@ -72,6 +75,9 @@
      background so letterboxing looks natural; change background if desired. */
   object-fit: contain;
   object-position: center center;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Full photo display - no cropping */

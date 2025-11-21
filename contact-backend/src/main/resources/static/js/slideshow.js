@@ -53,7 +53,10 @@
         img.style.cssText = `
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          /* Use contain so full image is visible and not cropped. This will
+             letterbox when the image aspect ratio doesn't match the slideshow
+             container. Change to 'cover' if you prefer full-bleed cropping. */
+          object-fit: contain;
           object-position: center;
           display: block;
           opacity: 0;

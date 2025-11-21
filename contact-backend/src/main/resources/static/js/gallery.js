@@ -590,11 +590,11 @@ const serviceGalleryData = {
   wedding: {
     title: "Wedding Photography",
     images: [
-      "images/Wedding/DSC00224.jpg",
+  "images/Slidephotos/untitled%20folder/DSC00224.jpg",
       "images/wedding/DSC09908.jpg",
       "images/photoshoot/DSC02033.jpg",
       "images/photoshoot/cropped.jpeg",
-      "images/Wedding/DSC00224.jpg",
+  "images/Slidephotos/untitled%20folder/DSC00224.jpg",
       "images/wedding/DSC09908.jpg",
     ],
   },
@@ -605,7 +605,7 @@ const serviceGalleryData = {
       "images/baby-with-family/DSC06300.jpg",
       "images/photoshoot/DSC02033.jpg",
       "images/photoshoot/cropped.jpeg",
-      "images/Wedding/DSC00224.jpg",
+  "images/Slidephotos/untitled%20folder/DSC00224.jpg",
     ],
   },
   maternity: {
@@ -613,7 +613,7 @@ const serviceGalleryData = {
     images: [
       "images/maternity/white.jpg",
       "images/photoshoot/cropped.jpeg",
-      "images/Wedding/DSC00224.jpg",
+  "images/Slidephotos/untitled%20folder/DSC00224.jpg",
       "images/wedding/DSC09908.jpg",
       "images/photoshoot/DSC02033.jpg",
     ],

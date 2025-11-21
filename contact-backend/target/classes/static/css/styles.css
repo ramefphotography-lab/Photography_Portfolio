@@ -66,7 +66,11 @@
   flex-shrink: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* Use contain so the full image is visible (no cropping). This will
+     letterbox (show background) if the image aspect ratio doesn't match
+     the slideshow container. The slideshow container already uses a dark
+     background so letterboxing looks natural; change background if desired. */
+  object-fit: contain;
   object-position: center center;
 }
 
@@ -456,7 +460,9 @@ body > main:first-of-type {
 .card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* Use contain to avoid cropping when the container has a fixed height. This
+     preserves the whole photo while keeping it centered. */
+  object-fit: contain;
   object-position: center;
   transition: transform 0.4s ease;
 }
@@ -802,7 +808,8 @@ body > main:first-of-type {
 .contact-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* Avoid cropping on small windows — keep the whole image visible */
+  object-fit: contain;
   object-position: center;
 }
 

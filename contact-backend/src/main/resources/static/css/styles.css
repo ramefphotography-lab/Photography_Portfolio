@@ -69,11 +69,8 @@
   flex-shrink: 0;
   width: 100%;
   height: 100%;
-  /* Use contain so the full image is visible (no cropping). This will
-     letterbox (show background) if the image aspect ratio doesn't match
-     the slideshow container. The slideshow container already uses a dark
-     background so letterboxing looks natural; change background if desired. */
-  object-fit: contain;
+  /* Use cover to make all images the same size - fills the entire container */
+  object-fit: cover;
   object-position: center center;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -430,7 +427,7 @@ body > main:first-of-type {
 /* Masonry Services Layout */
 .services-masonry {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto auto;
   gap: 2rem;
   margin-bottom: 60px;
@@ -442,18 +439,20 @@ body > main:first-of-type {
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s ease;
+  height: 350px;
 }
 
 .service-card.featured {
-  grid-row: span 2;
+  /* All cards same size now */
+  grid-row: span 1;
 }
 
 .service-card.compact {
-  height: 300px;
+  height: 350px;
 }
 
 .service-card.featured .card-image {
-  height: 620px;
+  height: 350px;
 }
 
 .card-image {
@@ -1245,11 +1244,12 @@ select option:checked {
   }
   
   .service-card.featured .card-image {
-    height: 300px;
+    height: 350px;
   }
   
   .service-card {
     margin-bottom: 1rem;
+    height: 350px;
   }
   
   /* Mobile Testimonials */

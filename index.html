@@ -343,7 +343,7 @@
         
         <div class="contact-right">
           <div class="contact-form-wrapper">
-            <!-- FORMSUBMIT FORM - Replace YOUR_EMAIL@example.com with your actual email -->
+            <!-- FORMSUBMIT FORM -->
             <form id="contact-form" class="modern-form" 
                   action="https://formsubmit.co/ravipatiyeswanth99@gmail.com" 
                   method="POST">
@@ -467,13 +467,30 @@
   </footer>
 
   <script src="js/slideshow.js?v=1.9" defer></script>
-  <script src="js/custom-select.js?v=1.2" defer></script>
-  <script src="js/gallery.js?v=2.0" defer></script>
+  <!-- Temporarily disable these scripts to test form submission -->
+  <!-- <script src="js/custom-select.js?v=1.2" defer></script> -->
+  <!-- <script src="js/gallery.js?v=2.0" defer></script> -->
   <script src="js/premium-effects.js?v=1.9" defer></script>
   
   <!-- Year update script -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  
+  <!-- Fix form submission to use FormSubmit -->
+  <script>
+    // Remove any existing form submit handlers
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact-form');
+      if (form) {
+        // Remove all event listeners by cloning the form
+        const newForm = form.cloneNode(true);
+        form.parentNode.replaceChild(newForm, form);
+        
+        // Let the form submit naturally to FormSubmit
+        console.log('Form is ready to submit to FormSubmit');
+      }
+    });
   </script>
 </body>
 </html>
